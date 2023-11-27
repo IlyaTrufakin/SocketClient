@@ -18,40 +18,66 @@ namespace SocketClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static int port = 8005;
-        private static string IPAdress = "127.0.0.1";
+
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
-        private static void SocketInit()
+        private static IPEndPoint SocketInit(string ipAddress, string port)
         {
-            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(IPAdress), port);
-            Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            clientSocket.Connect(ipPoint);
-
-            Console.WriteLine("Enter data to send: ");
-            string message = Console.ReadLine();
-            byte[] sendData = Encoding.Unicode.GetBytes(message);
-            clientSocket.Send(sendData);
-
-            StringBuilder recievedString = new StringBuilder();
-            int recievedBytes = 0;
-            byte[] receiveData = new byte[4096];
-
-            do
+            try
             {
-                recievedBytes = clientSocket.Receive(receiveData, receiveData.Length, 0);
-                recievedString.Append(Encoding.Unicode.GetString(receiveData, 0, recievedBytes));
-            } while (clientSocket.Available > 0);
+                if (!int.TryParse(port, out int portNumber))
+                {
+                    throw new ArgumentException("Порт задан неверно (должен быть числом)");
+                }
 
-            Console.WriteLine("Server answer: " + recievedString.ToString());
-            clientSocket.Shutdown(SocketShutdown.Both);
-            clientSocket.Close();
-            Console.WriteLine("Socket close...");
+                return new IPEndPoint(IPAddress.Parse(ipAddress), portNumber);
+            }
+            catch (FormatException ex)
+            {
+                throw new FormatException("Некорректный формат IP-адреса", ex);
+            }
+            catch (ArgumentException ex)
+            {
+                throw new ArgumentException("ошибка аргумента: " + ex.Message, ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+        }
+
+        private void StartClient(string ipAddress, string port)
+        {
+            try
+            {
+                IPEndPoint? endpoint = SocketInit(ipAddress, port);
+
+                if (endpoint != null)
+                {
+                    OutputWindow.Text += "IPEndPoint успешно создан.\n";
+
+                }
+                else
+                {
+                    OutputWindow.Text += "IPEndPoint не создан из-за ошибки в методе SocketInit.\n";
+                }
+            }
+
+            catch (Exception ex)
+            {
+                OutputWindow.Text += "Произошла ошибка: " + ex.Message + Environment.NewLine;
+            }
+            ScrollTextBlock.ScrollToEnd();
+
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StartClient(ipAddress.Text, portNumber.Text);
         }
     }
 }

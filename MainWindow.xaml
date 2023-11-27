@@ -5,23 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SocketClient"
         mc:Ignorable="d"
-        Title="Communication test" Height="400" Width="800" MinWidth="500" MinHeight="200">
+        Title="Communication test" Height="400" Width="800" MinWidth="600" MinHeight="200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+        
 
 
         <DockPanel Grid.Row="0" Background="#FFADADAD">
             <Label DockPanel.Dock="Left" VerticalAlignment="Center">Enter IP address:</Label>
-            <TextBox DockPanel.Dock="Left" Name="ipAddress" Width="100" VerticalAlignment="Center"></TextBox>
+            <TextBox x:Name="ipAddress" DockPanel.Dock="Left" Width="100" VerticalAlignment="Center"></TextBox>
             <Label DockPanel.Dock="Left" VerticalAlignment="Center" >Enter port number:</Label>
-            <TextBox DockPanel.Dock="Left" Name="portNumber" Width="50" VerticalAlignment="Center" ></TextBox>
-            <Button DockPanel.Dock="Right" Margin="5" Background="#FF07BB33" Width="60" HorizontalAlignment="Right">Connect</Button>
+            <TextBox x:Name="portNumber" DockPanel.Dock="Left" Width="50" VerticalAlignment="Center" ></TextBox>
+            <Button DockPanel.Dock="Right" Margin="5"  Width="90" HorizontalAlignment="Right" Click="Button_Click">Connect</Button>
+            <Button DockPanel.Dock="Right" Margin="5"  Width="90" HorizontalAlignment="Right" Click="Button_Click">Send Message</Button>
         </DockPanel>
-        
-        
- 
+
+        <TextBlock Text="Статус:" Padding="5,0,0,0" Grid.Row="1" Background="PowderBlue"  VerticalAlignment="Center"/>
+        <ScrollViewer x:Name="ScrollTextBlock" VerticalScrollBarVisibility="Auto" Grid.Row="2" >
+            <TextBlock x:Name="OutputWindow"  Background="White" TextWrapping="WrapWithOverflow" />
+        </ScrollViewer>
+        <TextBlock Text="Ввод сообщения:" Padding="5,0,0,0" Grid.Row="3" Background="PowderBlue"  VerticalAlignment="Center"/>
+        <ScrollViewer x:Name="ScrollTextBox" VerticalScrollBarVisibility="Auto" Grid.Row="4" >
+            <TextBox x:Name="InputWindow" BorderThickness="0" />
+        </ScrollViewer>
+
     </Grid>
 </Window>
