@@ -33,7 +33,7 @@
             <TextBlock x:Name="OutputWindow"  Background="White" TextWrapping="WrapWithOverflow" />
         </ScrollViewer>
 
-        <TextBlock Text="Ввод сообщения:" Height="20" Padding="5,0,0,0" Grid.Row="3" Background="PowderBlue"  VerticalAlignment="Center" />
+        <TextBlock Text="Ввод сообщения (bye - для закрытия соединения):" Height="20" Padding="5,0,0,0" Grid.Row="3" Background="PowderBlue"  VerticalAlignment="Center" />
         <ScrollViewer x:Name="ScrollTextBox" VerticalScrollBarVisibility="Auto" Grid.Row="4" >
             <TextBox x:Name="InputWindow" BorderThickness="0" />
         </ScrollViewer>
