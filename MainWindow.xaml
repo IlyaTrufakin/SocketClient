@@ -20,9 +20,9 @@
 
         <DockPanel Grid.Row="0" Background="#FFADADAD">
             <Label DockPanel.Dock="Left" VerticalAlignment="Center">Enter IP address:</Label>
-            <TextBox x:Name="ipAddress" DockPanel.Dock="Left" Width="100" VerticalAlignment="Center"></TextBox>
+            <TextBox x:Name="ipAddress" DockPanel.Dock="Left" Width="100" VerticalAlignment="Center" Text="127.0.0.1"></TextBox>
             <Label DockPanel.Dock="Left" VerticalAlignment="Center" >Enter port number:</Label>
-            <TextBox x:Name="portNumber" DockPanel.Dock="Left" Width="50" VerticalAlignment="Center" ></TextBox>
+            <TextBox x:Name="portNumber" DockPanel.Dock="Left" Width="50" VerticalAlignment="Center" Text="8005"></TextBox>
             <Button x:Name="ConnectButton" DockPanel.Dock="Right" Margin="5"  Width="90" HorizontalAlignment="Right" Click="Button_Click">Connect</Button>
             <Button x:Name="SendMessageButton" DockPanel.Dock="Right" Margin="5"  Width="90" HorizontalAlignment="Right" Click="SendMessageButton_Click">Send Message</Button>
         </DockPanel>
