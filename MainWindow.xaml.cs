@@ -39,7 +39,7 @@ namespace SocketClient
         {
             if (serverCommunication.IsConnected())
             {
-                string response = serverCommunication.SendMessage("time");
+                string response = serverCommunication.SendMessage("timeQuiet");
                 Status1.Text = "Время Сервера: " + response;
                 Status2.Text = "Соединение с сервером: установлено";
             }
