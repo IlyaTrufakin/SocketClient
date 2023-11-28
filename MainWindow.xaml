@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SocketClient"
         mc:Ignorable="d"
-        Title="Communication test" Height="400" Width="800" MinWidth="600" MinHeight="200">
+        Title="Communication test" Height="400" Width="800" MinWidth="600" MinHeight="200" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -13,8 +13,9 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        
+
 
 
         <DockPanel Grid.Row="0" Background="#FFADADAD">
@@ -22,18 +23,30 @@
             <TextBox x:Name="ipAddress" DockPanel.Dock="Left" Width="100" VerticalAlignment="Center"></TextBox>
             <Label DockPanel.Dock="Left" VerticalAlignment="Center" >Enter port number:</Label>
             <TextBox x:Name="portNumber" DockPanel.Dock="Left" Width="50" VerticalAlignment="Center" ></TextBox>
-            <Button DockPanel.Dock="Right" Margin="5"  Width="90" HorizontalAlignment="Right" Click="Button_Click">Connect</Button>
-            <Button DockPanel.Dock="Right" Margin="5"  Width="90" HorizontalAlignment="Right" Click="Button_Click">Send Message</Button>
+            <Button x:Name="ConnectButton" DockPanel.Dock="Right" Margin="5"  Width="90" HorizontalAlignment="Right" Click="Button_Click">Connect</Button>
+            <Button x:Name="SendMessageButton" DockPanel.Dock="Right" Margin="5"  Width="90" HorizontalAlignment="Right" Click="SendMessageButton_Click">Send Message</Button>
         </DockPanel>
 
-        <TextBlock Text="Статус:" Padding="5,0,0,0" Grid.Row="1" Background="PowderBlue"  VerticalAlignment="Center"/>
+        <TextBlock Text="События:" Height="20"  Padding="5,0,0,0" Grid.Row="1" Background="PowderBlue"  VerticalAlignment="Center"/>
+
         <ScrollViewer x:Name="ScrollTextBlock" VerticalScrollBarVisibility="Auto" Grid.Row="2" >
             <TextBlock x:Name="OutputWindow"  Background="White" TextWrapping="WrapWithOverflow" />
         </ScrollViewer>
-        <TextBlock Text="Ввод сообщения:" Padding="5,0,0,0" Grid.Row="3" Background="PowderBlue"  VerticalAlignment="Center"/>
+
+        <TextBlock Text="Ввод сообщения:" Height="20" Padding="5,0,0,0" Grid.Row="3" Background="PowderBlue"  VerticalAlignment="Center" />
         <ScrollViewer x:Name="ScrollTextBox" VerticalScrollBarVisibility="Auto" Grid.Row="4" >
             <TextBox x:Name="InputWindow" BorderThickness="0" />
         </ScrollViewer>
+
+        <StatusBar  Grid.Row="5" Height="20" Padding="5,0,0,0" Background="FloralWhite" VerticalAlignment="Bottom"  VerticalContentAlignment="Center">
+            <StatusBarItem>
+                <TextBlock>Status 1</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock>Status 2</TextBlock>
+            </StatusBarItem>
+            <!-- Дополнительные StatusBarItems -->
+        </StatusBar>
 
     </Grid>
 </Window>
