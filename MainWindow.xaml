@@ -30,22 +30,22 @@
         <TextBlock Text="События:" Height="20"  Padding="5,0,0,0" Grid.Row="1" Background="PowderBlue"  VerticalAlignment="Center"/>
 
         <ScrollViewer x:Name="ScrollTextBlock" VerticalScrollBarVisibility="Auto" Grid.Row="2" >
-            <TextBlock x:Name="OutputWindow"  Background="White" TextWrapping="WrapWithOverflow" />
+            <TextBlock x:Name="OutputWindow"  Background="White" TextWrapping="WrapWithOverflow" Padding="5,5,5,5"/>
         </ScrollViewer>
 
-        <TextBlock Text="Ввод сообщения (bye - для закрытия соединения):" Height="20" Padding="5,0,0,0" Grid.Row="3" Background="PowderBlue"  VerticalAlignment="Center" />
+        <TextBlock Height="20" Padding="5,0,0,0" Grid.Row="3" Background="PowderBlue"  VerticalAlignment="Center" >Ввод сообщения (bye - для закрытия соединения, time - получить время и дату на сервере, info - получить тип операц. системы сервера)</TextBlock>
         <ScrollViewer x:Name="ScrollTextBox" VerticalScrollBarVisibility="Auto" Grid.Row="4" >
-            <TextBox x:Name="InputWindow" BorderThickness="0" />
+            <TextBox x:Name="InputWindow" BorderThickness="0"  Padding="5,5,5,5"/>
         </ScrollViewer>
 
-        <StatusBar  Grid.Row="5" Height="20" Padding="5,0,0,0" Background="FloralWhite" VerticalAlignment="Bottom"  VerticalContentAlignment="Center">
+        <StatusBar  Grid.Row="5" Height="20" Padding="0,0,0,0" Background="PowderBlue" VerticalAlignment="Bottom"  VerticalContentAlignment="Center">
             <StatusBarItem>
-                <TextBlock>Status 1</TextBlock>
+                <TextBlock x:Name="Status1"  Padding="5,0,5,0" VerticalAlignment="Center" Width="250" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBlock>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock>Status 2</TextBlock>
+                <TextBlock x:Name="Status2"  Padding="5,0,5,0" VerticalAlignment="Center" Width="250" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBlock>
             </StatusBarItem>
-            <!-- Дополнительные StatusBarItems -->
+  
         </StatusBar>
 
     </Grid>

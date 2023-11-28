@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SocketClient
 {
@@ -18,17 +19,39 @@ namespace SocketClient
     /// </summary>
     public partial class MainWindow : Window
     {
-   
+        private DispatcherTimer timer;
         private ServerCommunication serverCommunication;
  
         public MainWindow()
         {
             InitializeComponent();
             serverCommunication = new ServerCommunication();
+            // Создаем таймер и устанавливаем интервал на 1 секунду
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (serverCommunication.IsConnected())
+            {
+                string response = serverCommunication.SendMessage("time");
+                Status1.Text = "Время Сервера: " + response;
+                Status2.Text = "Соединение с сервером: установлено";
+            }
+            else
+            {
+                Status1.Text = "Время Сервера: не доступно";
+                Status2.Text = "Соединение с сервером: не установлено";
+            }
+        }
+
+
+            private void Button_Click(object sender, RoutedEventArgs e)
         {
             string connectionResult = serverCommunication.ConnectToServer(ipAddress.Text, portNumber.Text);
             OutputWindow.Text += connectionResult + Environment.NewLine;
