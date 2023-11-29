@@ -68,8 +68,12 @@ namespace SocketClient
         {
             if (serverCommunication.IsConnected())
             {
+                if (InputWindow.Text.Length>0)
+                {
                 string response = serverCommunication.SendMessage(InputWindow.Text);
                 OutputWindow.Text += "Server answer: " + response + Environment.NewLine;
+                }
+
             }
             else
             {
