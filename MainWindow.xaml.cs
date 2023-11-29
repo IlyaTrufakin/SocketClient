@@ -56,6 +56,7 @@ namespace SocketClient
             string connectionResult = serverCommunication.ConnectToServer(ipAddress.Text, portNumber.Text);
             OutputWindow.Text += connectionResult + Environment.NewLine;
             SendMessageButton.IsEnabled = serverCommunication.IsConnected();
+            ScrollTextBlock.ScrollToEnd();
         }
 
 
@@ -79,6 +80,7 @@ namespace SocketClient
             {
                 OutputWindow.Text += "Сообщение не отправлено: нет соединения с сервером" + Environment.NewLine;
             }
+            ScrollTextBlock.ScrollToEnd();
         }
     }
 }

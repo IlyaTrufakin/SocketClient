@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SocketClient"
         mc:Ignorable="d"
-        Title="Communication test" Height="400" Width="800" MinWidth="600" MinHeight="200" Loaded="Window_Loaded">
+        Title="Communication test" Height="500" Width="800" MinWidth="600" MinHeight="400" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
+            <RowDefinition Height="30"/>
             <RowDefinition Height="25"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
@@ -27,21 +27,26 @@
             <Button x:Name="SendMessageButton" DockPanel.Dock="Right" Margin="5"  Width="90" HorizontalAlignment="Right" Click="SendMessageButton_Click">Send Message</Button>
         </DockPanel>
 
-        <TextBlock Text="События:" Height="20"  Padding="5,2,0,0" Grid.Row="1" Background="PowderBlue"  VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Text="События:" Height="25" Padding="5,3,0,3" Background="PowderBlue" VerticalAlignment="Center" />
 
-        <ScrollViewer x:Name="ScrollTextBlock" VerticalScrollBarVisibility="Auto" Grid.Row="2" >
-            <TextBlock x:Name="OutputWindow"  Background="White" TextWrapping="WrapWithOverflow" Padding="5,5,5,5"/>
+        <ScrollViewer x:Name="ScrollTextBlock" VerticalScrollBarVisibility="Auto" Grid.Row="2" Padding="5,5,5,5" >
+            <TextBlock x:Name="OutputWindow"  Background="White" TextWrapping="WrapWithOverflow" />
         </ScrollViewer>
 
-        <TextBlock Height="50" Padding="5,2,0,0" Grid.Row="3" Background="PowderBlue" TextWrapping="Wrap" VerticalAlignment="Center" >Ввод сообщения (bye - для закрытия соединения, time - получить время и дату на сервере, info - получить тип операц. системы сервера)</TextBlock>
-        <ScrollViewer x:Name="ScrollTextBox" VerticalScrollBarVisibility="Auto" Grid.Row="4" >
-            <TextBox x:Name="InputWindow" BorderThickness="0"  Padding="5,5,5,5"/>
-        </ScrollViewer>
+        <TextBlock Height="100" Padding="5,2,0,0" Grid.Row="3" Background="PowderBlue" TextWrapping="Wrap" VerticalAlignment="Center">
+        Ввод команд к серверу:<LineBreak/> <LineBreak/> 
+        bye - для закрытия соединения<LineBreak/>
+        time - получить время и дату на сервере<LineBreak/>
+        info - получить тип операц. системы сервера<LineBreak/>
+        get - для получения ответа от сервера - введенного пользователем сервера вручную
+        </TextBlock>
+
+
+        <TextBox x:Name="InputWindow" Grid.Row="4" BorderThickness="0"  Padding="3,5,5,5"/>
 
 
 
-
-        <StatusBar Grid.Row="5"  Background="PowderBlue"  VerticalContentAlignment="Center">
+        <StatusBar  Grid.Row="5" Height="25"  Background="PowderBlue"  >
             <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -49,23 +54,17 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <StatusBarItem Grid.Column="0" HorizontalAlignment="Stretch" Height="20" Background="#FF91B3B7">
-                    <TextBlock x:Name="Status1" Height="20" Padding="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <StatusBarItem Grid.Column="0" Margin="0,0,15,0" Height="23"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#FF91B3B7">
+                    <TextBlock x:Name="Status1"  Padding="5,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
                 </StatusBarItem>
-
-                <StatusBarItem Grid.Column="1" HorizontalAlignment="Stretch" Height="20" Background="#FF91B3B7">
-                    <TextBlock x:Name="Status2" Height="20" Padding="5,0,5,0" VerticalAlignment="Center"  HorizontalAlignment="Left"/>
+                <StatusBarItem Grid.Column="1" Margin="0,0,15,0" Height="23" HorizontalAlignment="Stretch"   VerticalAlignment="Center" Background="#FF91B3B7">
+                    <TextBlock x:Name="Status2"  Padding="5,0,10,0" VerticalAlignment="Center"   HorizontalAlignment="Stretch" Text="DFG"/>
                 </StatusBarItem>
-
-                <StatusBarItem  Grid.Column="2" HorizontalAlignment="Stretch" Height="20" Background="#FF91B3B7">
-                    <TextBlock x:Name="Status3" Height="20" Padding="5,0,5,0" VerticalAlignment="Center"   HorizontalAlignment="Left"/>
+                <StatusBarItem  Grid.Column="2" Margin="0,0,15,0" Height="23" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Background="#FF91B3B7">
+                    <TextBlock x:Name="Status3"  Padding="5,0,10,0" VerticalAlignment="Center"   HorizontalAlignment="Stretch" Text="test"/>
                 </StatusBarItem>
-
             </Grid>
         </StatusBar>
-
-
-
 
     </Grid>
 </Window>
