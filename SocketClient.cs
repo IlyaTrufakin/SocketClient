@@ -16,6 +16,10 @@ namespace SocketClient
         {
             try
             {
+                if (IsConnected())
+                {
+                    return "Соединение с сервером уже установлено";
+                }
                 IPEndPoint endpoint = SocketInit(ipAddress, port);
                 clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 clientSocket.Connect(endpoint);
