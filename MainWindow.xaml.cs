@@ -21,7 +21,7 @@ namespace SocketClient
     {
         private DispatcherTimer timer;
         private ServerCommunication serverCommunication;
- 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace SocketClient
         }
 
 
-            private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             string connectionResult = serverCommunication.ConnectToServer(ipAddress.Text, portNumber.Text);
             OutputWindow.Text += connectionResult + Environment.NewLine;
@@ -69,10 +69,10 @@ namespace SocketClient
         {
             if (serverCommunication.IsConnected())
             {
-                if (InputWindow.Text.Length>0)
+                if (InputWindow.Text.Length > 0)
                 {
-                string response = serverCommunication.SendMessage(InputWindow.Text);
-                OutputWindow.Text += "Server answer: " + response + Environment.NewLine;
+                    string response = serverCommunication.SendMessage(InputWindow.Text);
+                    OutputWindow.Text += "Ответ сервера: " + response + Environment.NewLine;
                 }
 
             }
@@ -81,6 +81,32 @@ namespace SocketClient
                 OutputWindow.Text += "Сообщение не отправлено: нет соединения с сервером" + Environment.NewLine;
             }
             ScrollTextBlock.ScrollToEnd();
+        }
+
+
+
+        private void InputWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (serverCommunication.IsConnected())
+                {
+                    if (InputWindow.Text.Length > 0)
+                    {
+                        string response = serverCommunication.SendMessage(InputWindow.Text);
+                        OutputWindow.Text += "Ответ сервера: " + response + Environment.NewLine;
+                    }
+
+                }
+                else
+                {
+                    OutputWindow.Text += "Сообщение не отправлено: нет соединения с сервером" + Environment.NewLine;
+                }
+                ScrollTextBlock.ScrollToEnd();
+            }
+
+
+
         }
     }
 }

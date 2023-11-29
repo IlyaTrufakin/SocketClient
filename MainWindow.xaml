@@ -42,7 +42,7 @@
         </TextBlock>
 
 
-        <TextBox x:Name="InputWindow" Grid.Row="4" BorderThickness="0"  Padding="3,5,5,5"/>
+        <TextBox x:Name="InputWindow" Grid.Row="4" BorderThickness="0"  Padding="3,5,5,5" KeyDown="InputWindow_KeyDown"/>
 
 
 
